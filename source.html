@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Webtestpilot — Webテスト対策、600円から。</title>
+<meta name="description" content="SPI・玉手箱。5,000問+解説、1年間スマホで使い放題。¥600で買い切り。">
+<meta property="og:title" content="Webtestpilot — Webテスト対策、600円から。">
+<meta property="og:description" content="SPI・玉手箱。5,000問+解説、¥600で1年使い放題。">
+<meta property="og:image" content="./assets/ASSET_OG.png">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Yusei+Magic&family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --cream:#FBF6EC;
+    --ink:#1B2A4E;
+    --pink:#E8A5A5;
+    --warm:#F5C451;
+    --soft:#F4EDE3;
+    --paper:#FFFFFF;
+    --line:#E7DFD0;
+  }
+  html,body{background:var(--cream);color:var(--ink);}
+  body{font-family:'Zen Maru Gothic',system-ui,-apple-system,'Hiragino Sans','Yu Gothic',sans-serif;font-weight:500;-webkit-font-smoothing:antialiased;letter-spacing:.01em;}
+  .font-bubble{font-family:'Yusei Magic',cursive;}
+  .num{font-family:'Inter',sans-serif;font-weight:900;font-feature-settings:"tnum";letter-spacing:-0.04em;}
+  .ink{color:var(--ink);}
+  .bg-cream{background:var(--cream);}
+  .bg-soft{background:var(--soft);}
+  .border-ink{border-color:var(--ink);}
+
+  /* progress bar */
+  #scrollbar{position:fixed;top:0;left:0;height:1.5px;width:0;background:var(--ink);z-index:60;transition:width .08s linear;}
+
+  /* sticky CTA */
+  #stickyCTA{transform:translateY(120%);transition:transform .35s ease;}
+  #stickyCTA.show{transform:translateY(0);}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease-out, transform .7s ease-out;}
+  .reveal.is-in{opacity:1;transform:none;}
+  .reveal-stagger > *{opacity:0;transform:translateY(20px);transition:opacity .6s ease-out, transform .6s ease-out;}
+  .reveal-stagger.is-in > *{opacity:1;transform:none;}
+  .reveal-stagger.is-in > *:nth-child(1){transition-delay:.00s}
+  .reveal-stagger.is-in > *:nth-child(2){transition-delay:.08s}
+  .reveal-stagger.is-in > *:nth-child(3){transition-delay:.16s}
+  .reveal-stagger.is-in > *:nth-child(4){transition-delay:.24s}
+  .reveal-stagger.is-in > *:nth-child(5){transition-delay:.32s}
+  .reveal-stagger.is-in > *:nth-child(6){transition-delay:.40s}
+
+  /* headline stagger */
+  .h-letter{display:inline-block;opacity:0;transform:translateY(20px);transition:opacity .55s ease, transform .55s ease;transition-delay:calc(var(--i,0) * 60ms);}
+  .h-letter.is-in{opacity:1;transform:none;}
+
+  /* blob drift */
+  .blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;pointer-events:none;will-change:transform;}
+  .blob.b1{width:520px;height:520px;background:radial-gradient(closest-side, #F5C451, transparent 70%);animation:drift1 14s ease-in-out infinite alternate;}
+  .blob.b2{width:420px;height:420px;background:radial-gradient(closest-side, #E8A5A5, transparent 70%);animation:drift2 16s ease-in-out infinite alternate;}
+  .blob.b3{width:360px;height:360px;background:radial-gradient(closest-side, #F5C451, transparent 70%);animation:drift1 18s ease-in-out infinite alternate-reverse;}
+  @keyframes drift1{from{transform:translate(-20px,-10px) scale(1);} to{transform:translate(40px,20px) scale(1.06);}}
+  @keyframes drift2{from{transform:translate(10px,30px) scale(1);} to{transform:translate(-30px,-10px) scale(1.08);}}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.95rem 1.25rem;border-radius:999px;font-weight:700;transition:transform .2s ease, box-shadow .2s ease, background .2s ease;will-change:transform;min-height:48px;}
+  .btn-primary{background:var(--ink);color:#fff;box-shadow:0 6px 0 #0d1733;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(27,42,78,.25);}
+  .btn-primary:active{transform:scale(.98);}
+  .btn-secondary{background:transparent;color:var(--ink);border:1.5px solid var(--ink);}
+  .btn-secondary:hover{transform:translateY(-2px);background:#fff;box-shadow:0 8px 20px rgba(27,42,78,.10);}
+
+  /* on air */
+  .onair{display:inline-flex;align-items:center;gap:.4rem;font-size:11px;letter-spacing:.18em;color:#7A1F1F;background:#FFE7E7;border:1px solid #E8A5A5;border-radius:999px;padding:.25rem .6rem;font-weight:700;}
+  .onair .dot{width:6px;height:6px;border-radius:50%;background:#D33;animation:pulse 1.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.6);opacity:.4;}}
+
+  /* card */
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:18px;transition:transform .25s ease, box-shadow .25s ease;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -20px rgba(27,42,78,.25);}
+
+  /* marquee */
+  .marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+  .marquee-track{display:flex;gap:2.5rem;width:max-content;animation:marquee 24s linear infinite;}
+  @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* phone tilt */
+  .phone{transform:rotate(-3deg);transition:transform .5s ease;}
+  .phone:hover{transform:rotate(0deg);}
+
+  /* speech bubble */
+  .bubble{position:relative;background:#fff;border:1.5px solid var(--ink);border-radius:14px;padding:.7rem .9rem;font-family:'Yusei Magic',cursive;font-size:14px;color:var(--ink);}
+  .bubble::after{content:"";position:absolute;left:-9px;top:18px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:9px solid var(--ink);}
+  .bubble::before{content:"";position:absolute;left:-7px;top:19px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:7px solid #fff;z-index:1;}
+
+  /* accordion */
+  details.faq{border-bottom:1px solid var(--line);}
+  details.faq > summary{list-style:none;cursor:pointer;padding:1.1rem 0;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-weight:700;}
+  details.faq > summary::-webkit-details-marker{display:none;}
+  details.faq .ans{overflow:hidden;max-height:0;transition:max-height .35s ease, padding .35s ease;color:#3A4A6F;}
+  details.faq[open] .ans{max-height:400px;padding-bottom:1.1rem;}
+  .chev{transition:transform .3s ease;}
+  details.faq[open] .chev{transform:rotate(45deg);}
+
+  /* step line svg */
+  .step-line{stroke-dasharray:1000;stroke-dashoffset:1000;transition:stroke-dashoffset 2s ease;}
+  .step-line.is-in{stroke-dashoffset:0;}
+
+  /* image placeholder overlay */
+  .ph-wrap{position:relative;display:inline-block;}
+  .ph-tag{position:absolute;left:50%;bottom:6px;transform:translateX(-50%);font-size:10px;color:#999;background:rgba(255,255,255,.85);border:1px dashed #cfcfcf;padding:2px 6px;border-radius:6px;white-space:nowrap;}
+  .ph-bg{background:repeating-linear-gradient(45deg,#F1EADB 0 10px,#EBE3D1 10px 20px);}
+
+  /* tap target safety */
+  a,button,summary{min-height:44px;}
+  summary{min-height:48px;}
+
+  /* hide scrollbar on marquee */
+  .marquee::-webkit-scrollbar{display:none;}
+
+  /* utility */
+  .container-mob{max-width:428px;margin-inline:auto;padding-inline:20px;}
+  @media (min-width:768px){.container-mob{max-width:960px;padding-inline:32px;}}
+  @media (min-width:1024px){.container-mob{max-width:1200px;padding-inline:40px;}}
+</style>
+</head>
+<body class="bg-cream ink">
+
+<!-- scroll progress -->
+<div id="scrollbar"></div>
+
+<!-- ============ FV ============ -->
+<header class="relative overflow-hidden">
+  <!-- blob bg -->
+  <div class="absolute inset-0 -z-0 pointer-events-none">
+    <div class="ph-wrap absolute inset-0 opacity-70">
+      <img src="./assets/ASSET_HERO_BG.png" alt="" width="1440" height="900" class="w-full h-full object-cover ph-bg">
+      <span class="ph-tag">[IMAGE: ASSET_HERO_BG - abstract cream/warm blob hero bg]</span>
+    </div>
+    <div class="blob b1" style="top:-120px;left:-80px;"></div>
+    <div class="blob b2" style="top:120px;right:-140px;"></div>
+    <div class="blob b3" style="bottom:-100px;left:30%;"></div>
+  </div>
+
+  <div class="container-mob relative pt-6 pb-10 md:pt-10 md:pb-20">
+    <!-- top bar -->
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-full bg-[var(--ink)] text-white grid place-items-center font-bubble text-sm">wp</div>
+        <span class="font-bold tracking-tight">Webtestpilot</span>
+      </div>
+      <div class="flex items-center gap-2 md:gap-3">
+        <a href="https://webtestpilot.carynstegia.com/customers/sign_in" class="inline-flex items-center text-[12px] md:text-[14px] font-bold text-[var(--ink)] border border-[var(--ink)] px-3 md:px-4 h-9 md:h-10 rounded-full hover:bg-[var(--ink)] hover:text-white transition">ログイン</a>
+        <a href="https://webtestpilot.carynstegia.com/customers/sign_up" class="inline-flex items-center text-[12px] md:text-[14px] font-black bg-[var(--ink)] text-white px-3 md:px-4 h-9 md:h-10 rounded-full hover:translate-y-[-1px] transition-transform">新規登録（¥600）</a>
+      </div>
+    </div>
+
+    <!-- hero grid -->
+    <div class="mt-8 grid md:grid-cols-12 gap-8 items-center">
+      <!-- left -->
+      <div class="md:col-span-7">
+        <p class="text-xs tracking-[.2em] text-[#7a6a48] font-bold">WEB TEST PREP APP / ¥600</p>
+        <h1 id="hl" class="mt-3 font-black leading-[1.05] text-[28px] sm:text-[36px] md:text-[56px] xl:text-[72px]" aria-label="Webテスト対策 600円から">
+          <!-- letters injected by JS for stagger -->
+        </h1>
+        <p class="mt-4 text-[15px] md:text-[17px] leading-relaxed text-[#3A4A6F] max-w-[34ch] md:max-w-[42ch]">
+          SPI・玉手箱。<br>
+          5,000問+解説、1年間スマホで使い放題。
+        </p>
+
+        <!-- ¥600 huge -->
+        <div class="mt-7 flex items-end gap-4">
+          <div class="flex flex-col">
+            <span class="text-[10px] tracking-[.25em] text-[#7a6a48] font-bold">税込</span>
+            <div class="num text-[80px] sm:text-[120px] md:text-[200px] xl:text-[280px] leading-none whitespace-nowrap" style="letter-spacing:-0.04em;">
+              ¥<span id="fvPrice">0</span>
+            </div>
+            <span class="text-[10px] tracking-[.25em] text-[#7a6a48] font-bold mt-1">1年間アクセス / 買い切り</span>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="mt-7 flex flex-col sm:flex-row gap-3">
+          <a href="#cta" class="btn btn-primary">¥600で買う(プロフィールから)</a>
+          <a href="#sample" class="btn btn-secondary">無料で1問だけ解く</a>
+        </div>
+
+        <!-- mobile bon/moku row -->
+        <div class="mt-6 flex md:hidden items-center gap-3">
+          <img src="./icons/bon-circle.png" width="44" height="44" alt="ぼん" class="rounded-full border border-[var(--ink)]">
+          <img src="./icons/moku-circle.png" width="44" height="44" alt="もく" class="rounded-full border border-[var(--ink)]">
+          <div class="bubble ml-1">ぼん&もくが普段使ってるやつ、これ。</div>
+        </div>
+      </div>
+
+      <!-- right (desktop only): ぼん&もく顔アイコン2人並び -->
+      <div class="hidden md:flex md:col-span-5 items-center justify-center gap-6 relative">
+        <div class="relative" style="transform:rotate(-2deg);">
+          <img src="./icons/bon-circle.png" width="200" height="200" alt="ぼん" class="shadow-xl">
+          <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[var(--ink)] text-white text-xs font-bold px-3 py-1 rounded-full">ぼん</span>
+        </div>
+        <div class="relative" style="transform:rotate(2deg) translateY(8px);">
+          <img src="./icons/moku-circle.png" width="200" height="200" alt="もく" class="shadow-xl">
+          <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[var(--warm)] text-white text-xs font-bold px-3 py-1 rounded-full">もく</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ WHAT IS WEBTESTPILOT ============ -->
+<section class="container-mob py-16 md:py-24">
+  <div class="grid md:grid-cols-12 gap-10 items-center">
+    <div class="md:col-span-7 reveal">
+      <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">WHAT IS THIS?</p>
+      <h2 class="mt-3 text-[24px] md:text-[36px] font-black leading-tight">Webtestpilotって何？</h2>
+      <p class="mt-5 text-[15px] md:text-[17px] leading-[1.9] text-[#3A4A6F]">
+        WebtestpilotはSPI・玉手箱など、<br>
+        主要なWebテストをまとめて対策できるスマホアプリ。<br>
+        5,000問以上の問題と解説が入っていて、1年間いつでも解き直しOK。<br>
+        電車の中でも寝る前でも、スマホひとつで進められます。<br>
+        支払いはクレジットカードかPayPayで¥600(税込)、買い切り型。
+      </p>
+
+      <div class="mt-6 flex items-center gap-3">
+        <img src="./icons/bon-circle.png" width="40" height="40" alt="ぼん" class="rounded-full border border-[var(--ink)]">
+        <img src="./icons/moku-circle.png" width="40" height="40" alt="もく" class="rounded-full border border-[var(--ink)]">
+        <div class="bubble">ぼん&もくが普段使ってるやつ、これ。</div>
+      </div>
+    </div>
+
+    <div class="md:col-span-5 reveal flex justify-center">
+      <div class="relative phone">
+        <img src="./assets/ASSET_PHONE_SCREEN_QUIZ.png" width="320" height="640" alt="Webtestpilotの問題画面（実物スクショ）" class="rounded-[36px] border-[6px] border-[var(--ink)] shadow-xl">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 対応テスト (marquee) ============ -->
+<section class="py-12 md:py-16 bg-soft border-y border-[var(--line)]">
+  <div class="container-mob reveal">
+    <div class="text-center">
+      <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">SUPPORTED TESTS</p>
+      <h2 class="mt-2 text-[22px] md:text-[32px] font-black">SPI・玉手箱、まとめて1アプリで。</h2>
+    </div>
+  </div>
+  <div class="mt-8 marquee">
+    <div class="marquee-track text-[20px] md:text-[28px] font-black ink whitespace-nowrap">
+      <span>SPI</span><span>・</span><span>玉手箱</span><span>・</span><span>順次拡張中</span><span>・</span><span>SPI</span><span>・</span><span>玉手箱</span><span>・</span><span>順次拡張中</span><span>・</span>
+      <span>SPI</span><span>・</span><span>玉手箱</span><span>・</span><span>順次拡張中</span><span>・</span><span>SPI</span><span>・</span><span>玉手箱</span><span>・</span><span>順次拡張中</span><span>・</span>
+    </div>
+  </div>
+
+  <div class="container-mob mt-10">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 reveal-stagger max-w-[640px] mx-auto">
+      <div class="card p-5 text-center"><div class="font-black text-[20px]">SPI</div><div class="text-xs mt-1 text-[#7a6a48]">言語+非言語</div></div>
+      <div class="card p-5 text-center"><div class="font-black text-[20px]">玉手箱</div><div class="text-xs mt-1 text-[#7a6a48]">4分野フル収録</div></div>
+      <div class="card p-5 text-center col-span-2 md:col-span-1"><div class="font-black text-[20px]">+α</div><div class="text-xs mt-1 text-[#7a6a48]">他テストも順次拡張</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3つの特徴 ============ -->
+<section class="container-mob py-16 md:py-24">
+  <div class="text-center reveal">
+    <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">3 FEATURES</p>
+    <h2 class="mt-2 text-[22px] md:text-[32px] font-black">3つの特徴</h2>
+  </div>
+  <div class="mt-10 grid md:grid-cols-3 gap-6 reveal-stagger">
+    <div class="card p-6">
+      <div class="ph-wrap relative">
+        <img src="./assets/ASSET_FEATURE_ICON_1.png" width="160" height="160" alt="5000問" class="ph-bg rounded-2xl">
+        <span class="ph-tag">[IMAGE: ASSET_FEATURE_ICON_1 - 5000問]</span>
+      </div>
+      <div class="mt-4">
+        <div class="flex items-baseline gap-1">
+          <span class="num text-[44px] md:text-[56px]" data-counter="5000">0</span>
+          <span class="text-[16px] font-bold">問以上</span>
+        </div>
+        <h3 class="mt-2 font-black text-[18px]">圧巻のボリューム</h3>
+        <p class="mt-2 text-[14px] leading-[1.8] text-[#3A4A6F]">SPI・玉手箱を中心に5,000問以上を収録。1年あれば余裕で回せる量。</p>
+      </div>
+    </div>
+
+    <div class="card p-6">
+      <div class="ph-wrap relative">
+        <img src="./assets/ASSET_FEATURE_ICON_2.png" width="160" height="160" alt="スマホで完結" class="ph-bg rounded-2xl">
+        <span class="ph-tag">[IMAGE: ASSET_FEATURE_ICON_2 - スマホ]</span>
+      </div>
+      <div class="mt-4">
+        <h3 class="mt-2 font-black text-[18px]">スマホで完結</h3>
+        <p class="mt-2 text-[14px] leading-[1.8] text-[#3A4A6F]">電車・寝る前・授業の合間。スキマ時間で1問ずつ進められる設計。アプリDL不要、ブラウザだけでOK。</p>
+      </div>
+    </div>
+
+    <div class="card p-6">
+      <div class="ph-wrap relative">
+        <img src="./assets/ASSET_FEATURE_ICON_3.png" width="160" height="160" alt="全問に解説" class="ph-bg rounded-2xl">
+        <span class="ph-tag">[IMAGE: ASSET_FEATURE_ICON_3 - 解説]</span>
+      </div>
+      <div class="mt-4">
+        <h3 class="mt-2 font-black text-[18px]">全問に解説つき</h3>
+        <p class="mt-2 text-[14px] leading-[1.8] text-[#3A4A6F]">なぜその答えになるか、考え方ベースで解説。間違えたところを潰せる。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 数値で見る ============ -->
+<section class="bg-soft py-16 md:py-24 border-y border-[var(--line)]">
+  <div class="container-mob">
+    <div class="text-center reveal">
+      <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">BY THE NUMBERS</p>
+      <h2 class="mt-2 text-[22px] md:text-[32px] font-black">数値で見るWebtestpilot</h2>
+    </div>
+    <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 reveal-stagger">
+      <div class="text-center">
+        <div class="num text-[56px] md:text-[80px] leading-none">¥<span data-counter="600">0</span></div>
+        <p class="mt-2 text-xs tracking-[.2em] font-bold">税込 / 買い切り</p>
+      </div>
+      <div class="text-center">
+        <div class="num text-[56px] md:text-[80px] leading-none"><span data-counter="5000">0</span>+</div>
+        <p class="mt-2 text-xs tracking-[.2em] font-bold">問題数</p>
+      </div>
+      <div class="text-center">
+        <div class="num text-[56px] md:text-[80px] leading-none"><span data-counter="1">0</span><span class="text-[24px] md:text-[32px]">年</span></div>
+        <p class="mt-2 text-xs tracking-[.2em] font-bold">アクセス期間</p>
+      </div>
+      <div class="text-center">
+        <div class="num text-[56px] md:text-[80px] leading-none"><span data-counter="4">0</span><span class="text-[24px] md:text-[32px]">大</span></div>
+        <p class="mt-2 text-xs tracking-[.2em] font-bold">テスト対応</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ なんで¥600なの？ ============ -->
+<section class="container-mob py-16 md:py-24">
+  <div class="grid md:grid-cols-12 gap-10 items-start">
+    <div class="md:col-span-5 reveal">
+      <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">WHY ¥600?</p>
+      <h2 class="mt-2 text-[24px] md:text-[36px] font-black leading-tight">なんで¥600なの？</h2>
+      <p class="mt-5 text-[15px] md:text-[17px] leading-[1.9] text-[#3A4A6F]">
+        Webテストの参考書は1冊だいたい1,500〜2,000円くらい。<br>
+        テスト種類ごとに揃えると、それなりに荷物にも財布にも来ます。<br>
+        スマホで全部回せて、解説まで読めて、ランチ1回分。<br>
+        そのラインに置きたかった、というだけの理由です。
+      </p>
+    </div>
+    <div class="md:col-span-7 reveal">
+      <div class="card p-6 md:p-8">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="rounded-xl border border-[var(--line)] p-5 bg-[var(--cream)]">
+            <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">参考書1冊</p>
+            <div class="num text-[36px] md:text-[44px] mt-2">¥1,500<span class="text-[18px]">〜</span></div>
+            <p class="text-xs mt-1 text-[#7a6a48]">テスト種別ごとに必要</p>
+          </div>
+          <div class="rounded-xl border-2 border-[var(--ink)] p-5 bg-white relative">
+            <span class="absolute -top-3 left-3 text-[10px] tracking-[.2em] font-bold bg-[var(--warm)] px-2 py-1 rounded">WEBTESTPILOT</span>
+            <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">アプリ買い切り</p>
+            <div class="num text-[44px] md:text-[56px] mt-2">¥600</div>
+            <p class="text-xs mt-1 text-[#7a6a48]">SPI・玉手箱+α / 1年</p>
+          </div>
+        </div>
+        <p class="mt-5 text-[12px] text-[#7a6a48]">※参考書の価格は一般的なWebテスト対策書の目安レンジ。書籍により異なります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 使い方3ステップ ============ -->
+<section class="bg-soft py-16 md:py-24 border-y border-[var(--line)]">
+  <div class="container-mob">
+    <div class="text-center reveal">
+      <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">HOW IT WORKS</p>
+      <h2 class="mt-2 text-[22px] md:text-[32px] font-black">使い方3ステップ</h2>
+    </div>
+
+    <div class="mt-10 relative reveal">
+      <!-- step line svg (desktop) -->
+      <svg viewBox="0 0 800 80" class="hidden md:block w-full h-20" preserveAspectRatio="none">
+        <path class="step-line" id="stepLine" d="M40,40 C200,80 600,0 760,40" fill="none" stroke="#1B2A4E" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+
+      <div class="grid md:grid-cols-3 gap-6 -mt-2 reveal-stagger">
+        <div class="card p-6 text-center">
+          <div class="num text-[44px]">01</div>
+          <h3 class="mt-2 font-black">購入する</h3>
+          <p class="mt-2 text-[14px] text-[#3A4A6F]">プロフィールから¥600で買う。<br>クレカ / PayPay対応。</p>
+        </div>
+        <div class="card p-6 text-center">
+          <div class="num text-[44px]">02</div>
+          <h3 class="mt-2 font-black">アプリを開く</h3>
+          <p class="mt-2 text-[14px] text-[#3A4A6F]">DL不要。<br>ブラウザでログインしてスタート。</p>
+        </div>
+        <div class="card p-6 text-center">
+          <div class="num text-[44px]">03</div>
+          <h3 class="mt-2 font-black">解いて解説を読む</h3>
+          <p class="mt-2 text-[14px] text-[#3A4A6F]">1問ずつ。<br>間違えたら解説で潰す。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 中の人 ============ -->
+<section class="container-mob py-16 md:py-24">
+  <div class="reveal max-w-[640px] mx-auto text-center">
+    <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">BEHIND THE APP</p>
+    <h2 class="mt-2 text-[22px] md:text-[32px] font-black">中の人について</h2>
+    <p class="mt-5 text-[14px] md:text-[16px] leading-[1.9] text-[#3A4A6F]">
+      Webtestpilotは、就活向けプロダクトを開発している会社が運営しているWebテスト対策アプリです。<br>
+      問題と解説の制作・運営は運営チームが、紹介・サポートはぼん&もくが担当しています。<br>
+      困ったときの問い合わせ先や運営者情報は、特定商取引法に基づく表記をご覧ください。
+    </p>
+  </div>
+</section>
+
+<!-- ============ ぼん&もくが薦めてる理由 ============ -->
+<section class="bg-soft py-16 md:py-24 border-y border-[var(--line)]">
+  <div class="container-mob">
+    <div class="grid md:grid-cols-12 gap-10 items-center">
+      <div class="md:col-span-5 reveal flex justify-center items-center gap-6">
+        <div class="relative" style="transform:rotate(-3deg);">
+          <img src="./icons/bon-circle.png" width="160" height="160" alt="ぼん" class="shadow-lg">
+          <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[var(--ink)] text-white text-xs font-bold px-3 py-1 rounded-full">ぼん</span>
+        </div>
+        <div class="relative" style="transform:rotate(3deg) translateY(10px);">
+          <img src="./icons/moku-circle.png" width="160" height="160" alt="もく" class="shadow-lg">
+          <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[var(--warm)] text-white text-xs font-bold px-3 py-1 rounded-full">もく</span>
+        </div>
+      </div>
+      <div class="md:col-span-7 reveal">
+        <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">FROM BON & MOKU</p>
+        <h2 class="mt-2 text-[22px] md:text-[32px] font-black">ぼん&もくから一言</h2>
+        <p class="mt-5 text-[15px] md:text-[17px] leading-[1.9] text-[#3A4A6F]">
+          関西の大学生コンビ。<br>
+          就活でWebテストに困ったから、<br>
+          ぼん&もくが届けてる本音のやつです。
+        </p>
+        <div class="mt-6 flex items-start gap-3">
+          <img src="./icons/bon-circle.png" width="44" height="44" alt="ぼん" class="rounded-full border border-[var(--ink)] shrink-0">
+          <div class="bubble">参考書積むより、まずスマホで回したほうが続くで。</div>
+        </div>
+        <div class="mt-3 flex items-start gap-3">
+          <img src="./icons/moku-circle.png" width="44" height="44" alt="もく" class="rounded-full border border-[var(--ink)] shrink-0">
+          <div class="bubble">解説あるから、なんで間違えたか分かるのがでかい。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 1問だけ試す ============ -->
+<section id="sample" class="container-mob py-16 md:py-24">
+  <div class="text-center reveal">
+    <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">TRY ONE</p>
+    <h2 class="mt-2 text-[22px] md:text-[32px] font-black">1問だけ試す</h2>
+    <p class="mt-3 text-[14px] text-[#3A4A6F]">ためしに1問。雰囲気だけ。</p>
+  </div>
+  <div class="mt-8 max-w-[640px] mx-auto reveal">
+    <div class="card p-6 md:p-8">
+      <div class="flex items-center justify-between">
+        <span class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">SPI / 非言語</span>
+        <span class="text-xs text-[#7a6a48]">Q. 01</span>
+      </div>
+      <p class="mt-4 text-[15px] md:text-[17px] leading-[1.9]">
+        ある商品の定価は1,200円である。これを定価の20%引きで販売したときの価格はいくらか。
+      </p>
+      <div class="mt-5 grid grid-cols-2 gap-3">
+        <button class="btn btn-secondary !rounded-xl !justify-start !px-4">A. 800円</button>
+        <button class="btn btn-secondary !rounded-xl !justify-start !px-4">B. 900円</button>
+        <button class="btn btn-secondary !rounded-xl !justify-start !px-4">C. 960円</button>
+        <button class="btn btn-secondary !rounded-xl !justify-start !px-4">D. 1,000円</button>
+      </div>
+      <details class="mt-5 rounded-xl bg-[var(--cream)] p-4">
+        <summary class="cursor-pointer text-sm font-bold">解説を見る</summary>
+        <p class="mt-3 text-[14px] leading-[1.8] text-[#3A4A6F]">1,200円の20%引き = 1,200 × 0.8 = 960円。答えはC。「20%引き = 元の80%」と置き換えると速い。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="bg-soft py-16 md:py-24 border-y border-[var(--line)]">
+  <div class="container-mob max-w-[820px] mx-auto">
+    <div class="text-center reveal">
+      <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">FAQ</p>
+      <h2 class="mt-2 text-[22px] md:text-[32px] font-black">よくある質問</h2>
+    </div>
+    <div class="mt-8 reveal">
+      <details class="faq">
+        <summary>支払方法は？ <span class="chev num text-[24px]">+</span></summary>
+        <div class="ans text-[14px] leading-[1.8]">クレジットカードとPayPayに対応しています。購入はプロフィールリンクから。</div>
+      </details>
+      <details class="faq">
+        <summary>対応端末は？ <span class="chev num text-[24px]">+</span></summary>
+        <div class="ans text-[14px] leading-[1.8]">iPhone / Android / PCのブラウザで動きます。DL不要。ログインすればどの端末でも続きから解けます。</div>
+      </details>
+      <details class="faq">
+        <summary>使える期間は？ <span class="chev num text-[24px]">+</span></summary>
+        <div class="ans text-[14px] leading-[1.8]">購入日から1年間アクセスできます。買い切り型なので、期間中は何度でも解き直しOK。</div>
+      </details>
+      <details class="faq">
+        <summary>返金できる？ <span class="chev num text-[24px]">+</span></summary>
+        <div class="ans text-[14px] leading-[1.8]">デジタル商品の性質上、購入後の返金はお受けしておりません(特定商取引法に基づく表記に準拠)。購入前に「1問だけ試す」で雰囲気を確認できます。</div>
+      </details>
+      <details class="faq">
+        <summary>対応テストの種類は？ <span class="chev num text-[24px]">+</span></summary>
+        <div class="ans text-[14px] leading-[1.8]">現在はSPI（言語・非言語）と玉手箱（四則逆算・表の空欄推測・図表の読み取り・趣旨判定）を収録。他テストも順次拡張予定です。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 最後のひと押し ============ -->
+<section id="cta" class="relative overflow-hidden py-20 md:py-32">
+  <div class="absolute inset-0 -z-0 pointer-events-none">
+    <div class="blob b1" style="top:-100px;left:-60px;"></div>
+    <div class="blob b2" style="bottom:-120px;right:-100px;"></div>
+  </div>
+  <div class="container-mob text-center relative">
+    <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48] reveal">FINAL PUSH</p>
+    <h2 class="mt-3 text-[26px] md:text-[44px] font-black leading-tight reveal">Webテスト、¥600で片付けよう。</h2>
+
+    <div class="mt-8 flex flex-col items-center reveal">
+      <span class="text-[10px] tracking-[.25em] text-[#7a6a48] font-bold">税込</span>
+      <div class="flex items-end leading-none mt-1">
+        <span class="num text-[44px] md:text-[64px]">¥</span>
+        <span id="finalPrice" class="num text-[100px] md:text-[200px] xl:text-[260px]">0</span>
+      </div>
+      <span class="text-[11px] tracking-[.2em] text-[#7a6a48] font-bold mt-2">1年間アクセス / 買い切り</span>
+    </div>
+
+    <div class="mt-8 flex flex-col items-center gap-3 reveal">
+      <a href="#" class="btn btn-primary !px-8 !py-4 !text-[16px]">¥600で買う(プロフィールから)</a>
+      <p class="text-[13px] text-[#7a6a48]">プロフィールから購入できます。</p>
+    </div>
+
+    <div class="mt-8 flex items-center justify-center gap-3 reveal">
+      <img src="./icons/bon-circle.png" width="40" height="40" alt="ぼん" class="rounded-full border border-[var(--ink)]">
+      <img src="./icons/moku-circle.png" width="40" height="40" alt="もく" class="rounded-full border border-[var(--ink)]">
+      <div class="bubble">ぼん&もくが普段薦めてるやつ。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Footer ============ -->
+<footer class="py-10 bg-[var(--ink)] text-white">
+  <div class="container-mob flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-full bg-white text-[var(--ink)] grid place-items-center font-bubble text-sm">wp</div>
+      <span class="font-bold">Webtestpilot</span>
+    </div>
+    <div class="flex flex-wrap items-center gap-4 text-[13px]">
+      <a href="#" class="underline underline-offset-4 hover:no-underline">特定商取引法に基づく表記</a>
+      <a href="#" class="underline underline-offset-4 hover:no-underline">プライバシーポリシー</a>
+      <a href="#" class="underline underline-offset-4 hover:no-underline">お問い合わせ</a>
+    </div>
+    <p class="text-[12px] opacity-70">© CARYNSTEGIA, Inc.</p>
+  </div>
+  <p class="container-mob text-[11px] opacity-60 mt-4">※本ページはモックアップであり、現時点で画像placeholderを含みます。</p>
+</footer>
+
+<!-- ============ Sticky CTA ============ -->
+<div id="stickyCTA" class="md:hidden fixed bottom-0 left-0 right-0 z-50 px-4 pb-4 pt-3 bg-gradient-to-t from-[var(--cream)] via-[var(--cream)] to-transparent">
+  <a href="#cta" class="btn btn-primary w-full !py-4 !text-[15px]">¥600で買う(プロフィールから)</a>
+</div>
+
+<script>
+  // ---- Headline letter stagger (2 lines) ----
+  (function(){
+    var hl=document.getElementById('hl');
+    var lines=['Webテスト対策','600円から'];
+    var html='';
+    var idx=0;
+    for(var l=0;l<lines.length;l++){
+      var line=lines[l];
+      html+='<span class="block">';
+      for(var i=0;i<line.length;i++){
+        var ch=line[i];
+        if(ch===' '){html+=' ';continue;}
+        html+='<span class="h-letter" style="--i:'+idx+'">'+ch+'</span>';
+        idx++;
+      }
+      html+='</span>';
+    }
+    hl.innerHTML=html;
+    setTimeout(function(){
+      document.querySelectorAll('#hl .h-letter').forEach(function(el){el.classList.add('is-in');});
+    },120);
+  })();
+
+  // ---- Reveal observer ----
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('is-in');
+        // counters
+        e.target.querySelectorAll('[data-counter]').forEach(function(node){
+          if(node.dataset._done)return;
+          node.dataset._done='1';
+          animateCount(node, parseInt(node.dataset.counter,10), 1200);
+        });
+        // step line
+        var sl=e.target.querySelector('.step-line');
+        if(sl) sl.classList.add('is-in');
+      }
+    });
+  },{threshold:.18});
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(function(el){io.observe(el);});
+
+  // ---- Counter helper ----
+  function animateCount(node, target, dur){
+    var start=performance.now();
+    function frame(now){
+      var t=Math.min(1,(now-start)/dur);
+      var eased=1-Math.pow(1-t,3);
+      var v=Math.round(eased*target);
+      // pretty format for big nums
+      node.textContent=target>=1000 ? v.toLocaleString('en-US') : v;
+      if(t<1) requestAnimationFrame(frame);
+      else node.textContent=target>=1000 ? target.toLocaleString('en-US') : target;
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // ---- FV price & final price counters (run on view) ----
+  var fvIO=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && !e.target.dataset._done){
+        e.target.dataset._done='1';
+        animateCount(e.target, 600, 1200);
+        fvIO.unobserve(e.target);
+      }
+    });
+  },{threshold:.4});
+  fvIO.observe(document.getElementById('fvPrice'));
+  fvIO.observe(document.getElementById('finalPrice'));
+
+  // ---- Scroll progress + sticky CTA ----
+  var bar=document.getElementById('scrollbar');
+  var sticky=document.getElementById('stickyCTA');
+  function onScroll(){
+    var h=document.documentElement;
+    var sc=h.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    if(sc>240) sticky.classList.add('show'); else sticky.classList.remove('show');
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // ---- Light parallax for phone mockup ----
+  var phone=document.querySelector('.phone');
+  if(phone){
+    document.addEventListener('scroll', function(){
+      var y=window.scrollY*0.04;
+      phone.style.translate='0 '+(-y)+'px';
+    },{passive:true});
+  }
+</script>
+</body>
+</html>
