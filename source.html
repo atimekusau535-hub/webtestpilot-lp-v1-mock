@@ -245,7 +245,7 @@
 <!-- ============ WHAT IS WEBTESTPILOT ============ -->
 <section class="container-mob py-16 md:py-24">
   <div class="grid md:grid-cols-12 gap-10 items-center">
-    <div class="md:col-span-7 reveal">
+    <div class="md:col-span-6 reveal">
       <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">WHAT IS THIS?</p>
       <h2 class="mt-3 text-[24px] md:text-[36px] font-black leading-tight">Webtestpilotって何？</h2>
       <p class="mt-5 text-[15px] md:text-[17px] leading-[1.9] text-[#3A4A6F]">
@@ -259,9 +259,24 @@
       </div>
     </div>
 
-    <div class="md:col-span-5 reveal flex justify-center">
-      <div class="relative phone">
-        <img src="./assets/ASSET_PHONE_SCREEN_QUIZ.png" width="320" height="640" alt="Webtestpilotの問題画面（実物スクショ）" class="rounded-[36px] border-[6px] border-[var(--ink)] shadow-xl">
+    <!-- 3 phone screens fan-out (HD) -->
+    <div class="md:col-span-6 reveal">
+      <div class="relative mx-auto" style="max-width:520px; min-height:380px;">
+        <!-- left phone: HOME -->
+        <div class="phone-card phone-l absolute left-0 top-6 md:top-10" style="transform:rotate(-8deg);">
+          <img src="./assets/ASSET_PHONE_SCREEN_HOME-hd.png" width="180" height="380" alt="Webtestpilotのホーム画面（実物スクショ）" class="block w-[140px] sm:w-[160px] md:w-[180px] h-auto rounded-[28px] border-[5px] border-[var(--ink)] shadow-xl bg-white">
+          <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white border border-[var(--ink)] text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap">HOME</span>
+        </div>
+        <!-- center phone: QUIZ (main, larger) -->
+        <div class="phone-card phone-c absolute left-1/2 -translate-x-1/2 top-0 z-10">
+          <img src="./assets/ASSET_PHONE_SCREEN_QUIZ-hd.png" width="220" height="450" alt="Webtestpilotの問題画面（実物スクショ）" class="block w-[170px] sm:w-[195px] md:w-[220px] h-auto rounded-[32px] border-[6px] border-[var(--ink)] shadow-2xl bg-white">
+          <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[var(--ink)] text-white text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap">QUIZ</span>
+        </div>
+        <!-- right phone: EXPLAIN -->
+        <div class="phone-card phone-r absolute right-0 top-6 md:top-10" style="transform:rotate(8deg);">
+          <img src="./assets/ASSET_PHONE_SCREEN_EXPLAIN-hd.png" width="180" height="380" alt="Webtestpilotの解説画面（実物スクショ）" class="block w-[140px] sm:w-[160px] md:w-[180px] h-auto rounded-[28px] border-[5px] border-[var(--ink)] shadow-xl bg-white">
+          <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white border border-[var(--ink)] text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap">解説</span>
+        </div>
       </div>
     </div>
   </div>
