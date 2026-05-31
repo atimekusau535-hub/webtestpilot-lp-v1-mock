@@ -144,47 +144,46 @@
     <div class="blob b3" style="bottom:-100px;left:30%;"></div>
   </div>
 
-  <div class="container-mob relative pt-6 pb-10 md:pt-10 md:pb-20">
+  <div class="container-mob relative pt-5 pb-10 md:pt-10 md:pb-20">
     <!-- top bar -->
-    <div class="flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded-full bg-[var(--ink)] text-white grid place-items-center font-bubble text-sm">wp</div>
-        <span class="font-bold tracking-tight">Webtestpilot</span>
+    <div class="flex items-center justify-between gap-2">
+      <div class="flex items-center gap-2 min-w-0">
+        <div class="w-8 h-8 rounded-full bg-[var(--ink)] text-white grid place-items-center font-bubble text-sm shrink-0">wp</div>
+        <span class="font-bold tracking-tight truncate">Webtestpilot</span>
       </div>
-      <div class="flex items-center gap-2 md:gap-3">
-        <a href="https://webtestpilot.carynstegia.com/customers/sign_in" class="inline-flex items-center text-[12px] md:text-[14px] font-bold text-[var(--ink)] border border-[var(--ink)] px-3 md:px-4 h-9 md:h-10 rounded-full hover:bg-[var(--ink)] hover:text-white transition">ログイン</a>
-        <a href="https://webtestpilot.carynstegia.com/customers/sign_up" class="inline-flex items-center text-[12px] md:text-[14px] font-black bg-[var(--ink)] text-white px-3 md:px-4 h-9 md:h-10 rounded-full hover:translate-y-[-1px] transition-transform">新規登録（¥600）</a>
+      <div class="flex items-center gap-2 md:gap-3 shrink-0">
+        <a href="https://webtestpilot.carynstegia.com/customers/sign_in" class="inline-flex items-center whitespace-nowrap text-[12px] md:text-[14px] font-bold text-[var(--ink)] border border-[var(--ink)] px-3 md:px-4 h-9 md:h-10 rounded-full hover:bg-[var(--ink)] hover:text-white transition">ログイン</a>
+        <a href="https://webtestpilot.carynstegia.com/customers/sign_up" class="inline-flex items-center whitespace-nowrap text-[12px] md:text-[14px] font-black bg-[var(--ink)] text-white px-3 md:px-4 h-9 md:h-10 rounded-full hover:translate-y-[-1px] transition-transform">新規登録<span class="hidden sm:inline">（¥600）</span></a>
       </div>
     </div>
 
     <!-- hero grid -->
-    <div class="mt-8 grid md:grid-cols-12 gap-8 items-center">
+    <div class="mt-7 md:mt-8 grid md:grid-cols-12 gap-6 md:gap-8 items-center">
       <!-- left -->
       <div class="md:col-span-7">
-        <p class="text-xs tracking-[.2em] text-[#7a6a48] font-bold">WEB TEST PREP APP / ¥600</p>
-        <h1 id="hl" class="mt-3 font-black leading-[1.05] text-[28px] sm:text-[36px] md:text-[56px] xl:text-[72px]" aria-label="Webテスト対策 600円から">
+        <p class="text-[11px] md:text-xs tracking-[.2em] text-[#7a6a48] font-bold">WEB TEST PREP APP / ¥600</p>
+        <h1 id="hl" class="mt-3 font-black leading-[1.05] text-[32px] sm:text-[44px] md:text-[60px] xl:text-[76px]" aria-label="Webテスト対策 600円から">
           <!-- letters injected by JS for stagger -->
         </h1>
-        <p class="mt-4 text-[15px] md:text-[17px] leading-relaxed text-[#3A4A6F] max-w-[34ch] md:max-w-[42ch]">
-          SPI・玉手箱。<br>
-          5,000問+解説、1年間スマホで使い放題。
+        <p class="mt-4 text-[15px] md:text-[17px] leading-[1.8] text-[#3A4A6F] max-w-[34ch] md:max-w-[42ch]">
+          SPI・玉手箱。5,000問+解説、1年間スマホで使い放題。
         </p>
 
         <!-- ¥600 huge -->
-        <div class="mt-7 flex items-end gap-4">
+        <div class="mt-6 md:mt-7 flex items-end gap-4">
           <div class="flex flex-col">
-            <span class="text-[10px] tracking-[.25em] text-[#7a6a48] font-bold">税込</span>
-            <div class="num text-[80px] sm:text-[120px] md:text-[200px] xl:text-[280px] leading-none whitespace-nowrap" style="letter-spacing:-0.04em;">
+            <span class="text-[11px] tracking-[.25em] text-[#7a6a48] font-bold">税込</span>
+            <div class="num text-[92px] sm:text-[128px] md:text-[200px] xl:text-[280px] leading-none whitespace-nowrap" style="letter-spacing:-0.04em;">
               ¥<span id="fvPrice">0</span>
             </div>
-            <span class="text-[10px] tracking-[.25em] text-[#7a6a48] font-bold mt-1">1年間アクセス / 買い切り</span>
+            <span class="text-[11px] tracking-[.22em] text-[#7a6a48] font-bold mt-1">1年間アクセス / 買い切り</span>
           </div>
         </div>
 
         <!-- CTAs -->
-        <div class="mt-7 flex flex-col sm:flex-row gap-3">
-          <a href="#cta" class="btn btn-primary">¥600で買う(プロフィールから)</a>
-          <a href="#sample" class="btn btn-secondary">無料で1問だけ解く</a>
+        <div class="mt-6 md:mt-7 flex flex-col sm:flex-row gap-3">
+          <a href="#cta" class="btn btn-primary w-full sm:w-auto">¥600で買う(プロフィールから)</a>
+          <a href="#sample" class="btn btn-secondary w-full sm:w-auto">無料で1問だけ解く</a>
         </div>
 
         <!-- mobile bon/moku row -->
@@ -210,6 +209,39 @@
   </div>
 </header>
 
+<!-- ============ なんで¥600なの？（FV直下：価格訴求を最前面に） ============ -->
+<section class="bg-soft py-12 md:py-20 border-y border-[var(--line)]">
+  <div class="container-mob">
+  <div class="grid md:grid-cols-12 gap-8 md:gap-10 items-start">
+    <div class="md:col-span-5 reveal">
+      <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">WHY ¥600?</p>
+      <h2 class="mt-2 text-[26px] md:text-[36px] font-black leading-tight">なんで¥600なの？</h2>
+      <p class="mt-5 text-[15px] md:text-[17px] leading-[1.9] text-[#3A4A6F]">
+        Webテストの参考書は1冊だいたい1,500〜2,000円。テスト種類ごとに揃えると、それなりに財布に来ます。スマホで全部回せて、解説まで読めて、ランチ1回分。そのラインに置きたかった、というだけの理由です。
+      </p>
+    </div>
+    <div class="md:col-span-7 reveal">
+      <div class="card p-5 md:p-8">
+        <div class="grid grid-cols-2 gap-3 md:gap-4">
+          <div class="rounded-xl border border-[var(--line)] p-4 md:p-5 bg-[var(--cream)]">
+            <p class="text-[10px] md:text-xs tracking-[.2em] font-bold text-[#7a6a48]">参考書1冊</p>
+            <div class="num text-[32px] md:text-[44px] mt-2 leading-none">¥1,500<span class="text-[14px] md:text-[18px]">〜</span></div>
+            <p class="text-[11px] md:text-xs mt-2 text-[#7a6a48] leading-[1.5]">テスト種別ごとに必要</p>
+          </div>
+          <div class="rounded-xl border-2 border-[var(--ink)] p-4 md:p-5 bg-white relative">
+            <span class="absolute -top-3 left-3 text-[9px] md:text-[10px] tracking-[.2em] font-bold bg-[var(--warm)] px-2 py-1 rounded">WEBTESTPILOT</span>
+            <p class="text-[10px] md:text-xs tracking-[.2em] font-bold text-[#7a6a48] mt-1">アプリ買い切り</p>
+            <div class="num text-[40px] md:text-[56px] mt-2 leading-none">¥600</div>
+            <p class="text-[11px] md:text-xs mt-2 text-[#7a6a48] leading-[1.5]">SPI・玉手箱+α / 1年</p>
+          </div>
+        </div>
+        <p class="mt-4 md:mt-5 text-[11px] md:text-[12px] text-[#7a6a48] leading-[1.6]">※参考書の価格は一般的なWebテスト対策書の目安レンジ。書籍により異なります。</p>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
 <!-- ============ WHAT IS WEBTESTPILOT ============ -->
 <section class="container-mob py-16 md:py-24">
   <div class="grid md:grid-cols-12 gap-10 items-center">
@@ -217,11 +249,7 @@
       <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">WHAT IS THIS?</p>
       <h2 class="mt-3 text-[24px] md:text-[36px] font-black leading-tight">Webtestpilotって何？</h2>
       <p class="mt-5 text-[15px] md:text-[17px] leading-[1.9] text-[#3A4A6F]">
-        WebtestpilotはSPI・玉手箱など、<br>
-        主要なWebテストをまとめて対策できるスマホアプリ。<br>
-        5,000問以上の問題と解説が入っていて、1年間いつでも解き直しOK。<br>
-        電車の中でも寝る前でも、スマホひとつで進められます。<br>
-        支払いはクレジットカードかPayPayで¥600(税込)、買い切り型。
+        WebtestpilotはSPI・玉手箱など、主要なWebテストをまとめて対策できるスマホアプリ。5,000問以上の問題と解説が入っていて、1年間いつでも解き直しOK。電車の中でも寝る前でも、スマホひとつで進められます。支払いはクレジットカードかPayPayで¥600(税込)、買い切り型。
       </p>
 
       <div class="mt-6 flex items-center gap-3">
@@ -337,43 +365,8 @@
   </div>
 </section>
 
-<!-- ============ なんで¥600なの？ ============ -->
-<section class="container-mob py-16 md:py-24">
-  <div class="grid md:grid-cols-12 gap-10 items-start">
-    <div class="md:col-span-5 reveal">
-      <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">WHY ¥600?</p>
-      <h2 class="mt-2 text-[24px] md:text-[36px] font-black leading-tight">なんで¥600なの？</h2>
-      <p class="mt-5 text-[15px] md:text-[17px] leading-[1.9] text-[#3A4A6F]">
-        Webテストの参考書は1冊だいたい1,500〜2,000円くらい。<br>
-        テスト種類ごとに揃えると、それなりに荷物にも財布にも来ます。<br>
-        スマホで全部回せて、解説まで読めて、ランチ1回分。<br>
-        そのラインに置きたかった、というだけの理由です。
-      </p>
-    </div>
-    <div class="md:col-span-7 reveal">
-      <div class="card p-6 md:p-8">
-        <div class="grid grid-cols-2 gap-4">
-          <div class="rounded-xl border border-[var(--line)] p-5 bg-[var(--cream)]">
-            <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">参考書1冊</p>
-            <div class="num text-[36px] md:text-[44px] mt-2">¥1,500<span class="text-[18px]">〜</span></div>
-            <p class="text-xs mt-1 text-[#7a6a48]">テスト種別ごとに必要</p>
-          </div>
-          <div class="rounded-xl border-2 border-[var(--ink)] p-5 bg-white relative">
-            <span class="absolute -top-3 left-3 text-[10px] tracking-[.2em] font-bold bg-[var(--warm)] px-2 py-1 rounded">WEBTESTPILOT</span>
-            <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">アプリ買い切り</p>
-            <div class="num text-[44px] md:text-[56px] mt-2">¥600</div>
-            <p class="text-xs mt-1 text-[#7a6a48]">SPI・玉手箱+α / 1年</p>
-          </div>
-        </div>
-        <p class="mt-5 text-[12px] text-[#7a6a48]">※参考書の価格は一般的なWebテスト対策書の目安レンジ。書籍により異なります。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ 使い方3ステップ ============ -->
-<section class="bg-soft py-16 md:py-24 border-y border-[var(--line)]">
-  <div class="container-mob">
+<section class="container-mob py-16 md:py-24">
     <div class="text-center reveal">
       <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">HOW IT WORKS</p>
       <h2 class="mt-2 text-[22px] md:text-[32px] font-black">使い方3ステップ</h2>
@@ -385,25 +378,24 @@
         <path class="step-line" id="stepLine" d="M40,40 C200,80 600,0 760,40" fill="none" stroke="#1B2A4E" stroke-width="2" stroke-linecap="round"/>
       </svg>
 
-      <div class="grid md:grid-cols-3 gap-6 -mt-2 reveal-stagger">
-        <div class="card p-6 text-center">
-          <div class="num text-[44px]">01</div>
-          <h3 class="mt-2 font-black">購入する</h3>
-          <p class="mt-2 text-[14px] text-[#3A4A6F]">プロフィールから¥600で買う。<br>クレカ / PayPay対応。</p>
+      <div class="grid md:grid-cols-3 gap-4 md:gap-6 -mt-2 reveal-stagger">
+        <div class="card p-5 md:p-6 text-center">
+          <div class="num text-[44px] leading-none">01</div>
+          <h3 class="mt-3 font-black">購入する</h3>
+          <p class="mt-2 text-[14px] leading-[1.8] text-[#3A4A6F]">プロフィールから¥600で買う。クレカ / PayPay対応。</p>
         </div>
-        <div class="card p-6 text-center">
-          <div class="num text-[44px]">02</div>
-          <h3 class="mt-2 font-black">アプリを開く</h3>
-          <p class="mt-2 text-[14px] text-[#3A4A6F]">DL不要。<br>ブラウザでログインしてスタート。</p>
+        <div class="card p-5 md:p-6 text-center">
+          <div class="num text-[44px] leading-none">02</div>
+          <h3 class="mt-3 font-black">アプリを開く</h3>
+          <p class="mt-2 text-[14px] leading-[1.8] text-[#3A4A6F]">DL不要。ブラウザでログインしてスタート。</p>
         </div>
-        <div class="card p-6 text-center">
-          <div class="num text-[44px]">03</div>
-          <h3 class="mt-2 font-black">解いて解説を読む</h3>
-          <p class="mt-2 text-[14px] text-[#3A4A6F]">1問ずつ。<br>間違えたら解説で潰す。</p>
+        <div class="card p-5 md:p-6 text-center">
+          <div class="num text-[44px] leading-none">03</div>
+          <h3 class="mt-3 font-black">解いて解説を読む</h3>
+          <p class="mt-2 text-[14px] leading-[1.8] text-[#3A4A6F]">1問ずつ。間違えたら解説で潰す。</p>
         </div>
       </div>
     </div>
-  </div>
 </section>
 
 <!-- ============ 中の人 ============ -->
@@ -412,9 +404,7 @@
     <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">BEHIND THE APP</p>
     <h2 class="mt-2 text-[22px] md:text-[32px] font-black">中の人について</h2>
     <p class="mt-5 text-[14px] md:text-[16px] leading-[1.9] text-[#3A4A6F]">
-      Webtestpilotは、就活向けプロダクトを開発している会社が運営しているWebテスト対策アプリです。<br>
-      問題と解説の制作・運営は運営チームが、紹介・サポートはぼん&もくが担当しています。<br>
-      困ったときの問い合わせ先や運営者情報は、特定商取引法に基づく表記をご覧ください。
+      Webtestpilotは、就活向けプロダクトを開発している会社が運営しているWebテスト対策アプリです。問題と解説の制作・運営は運営チームが、紹介・サポートはぼん&もくが担当しています。困ったときの問い合わせ先や運営者情報は、特定商取引法に基づく表記をご覧ください。
     </p>
   </div>
 </section>
@@ -437,9 +427,7 @@
         <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48]">FROM BON & MOKU</p>
         <h2 class="mt-2 text-[22px] md:text-[32px] font-black">ぼん&もくから一言</h2>
         <p class="mt-5 text-[15px] md:text-[17px] leading-[1.9] text-[#3A4A6F]">
-          関西の大学生コンビ。<br>
-          就活でWebテストに困ったから、<br>
-          ぼん&もくが届けてる本音のやつです。
+          関西の大学生コンビ。就活でWebテストに困ったから、ぼん&もくが届けてる本音のやつです。
         </p>
         <div class="mt-6 flex items-start gap-3">
           <img src="./icons/bon-circle.png" width="44" height="44" alt="ぼん" class="rounded-full border border-[var(--ink)] shrink-0">
@@ -526,18 +514,18 @@
     <p class="text-xs tracking-[.2em] font-bold text-[#7a6a48] reveal">FINAL PUSH</p>
     <h2 class="mt-3 text-[26px] md:text-[44px] font-black leading-tight reveal">Webテスト、¥600で片付けよう。</h2>
 
-    <div class="mt-8 flex flex-col items-center reveal">
-      <span class="text-[10px] tracking-[.25em] text-[#7a6a48] font-bold">税込</span>
+    <div class="mt-7 md:mt-8 flex flex-col items-center reveal">
+      <span class="text-[11px] tracking-[.25em] text-[#7a6a48] font-bold">税込</span>
       <div class="flex items-end leading-none mt-1">
         <span class="num text-[44px] md:text-[64px]">¥</span>
-        <span id="finalPrice" class="num text-[100px] md:text-[200px] xl:text-[260px]">0</span>
+        <span id="finalPrice" class="num text-[108px] sm:text-[140px] md:text-[200px] xl:text-[260px]">0</span>
       </div>
-      <span class="text-[11px] tracking-[.2em] text-[#7a6a48] font-bold mt-2">1年間アクセス / 買い切り</span>
+      <span class="text-[11px] tracking-[.22em] text-[#7a6a48] font-bold mt-2">1年間アクセス / 買い切り</span>
     </div>
 
-    <div class="mt-8 flex flex-col items-center gap-3 reveal">
-      <a href="#" class="btn btn-primary !px-8 !py-4 !text-[16px]">¥600で買う(プロフィールから)</a>
-      <p class="text-[13px] text-[#7a6a48]">プロフィールから購入できます。</p>
+    <div class="mt-7 md:mt-8 flex flex-col items-center gap-3 reveal">
+      <a href="https://webtestpilot.carynstegia.com/customers/sign_up" class="btn btn-primary !px-8 !py-4 !text-[16px]">💳 600円で購入する</a>
+      <p class="text-[13px] text-[#7a6a48]">新規登録 → 決済（クレカ / PayPay）→ アプリ即アクセス</p>
     </div>
 
     <div class="mt-8 flex items-center justify-center gap-3 reveal">
@@ -567,7 +555,7 @@
 
 <!-- ============ Sticky CTA ============ -->
 <div id="stickyCTA" class="md:hidden fixed bottom-0 left-0 right-0 z-50 px-4 pb-4 pt-3 bg-gradient-to-t from-[var(--cream)] via-[var(--cream)] to-transparent">
-  <a href="#cta" class="btn btn-primary w-full !py-4 !text-[15px]">¥600で買う(プロフィールから)</a>
+  <a href="https://webtestpilot.carynstegia.com/customers/sign_up" class="btn btn-primary w-full !py-4 !text-[15px]">💳 600円で購入する</a>
 </div>
 
 <script>
